@@ -1,0 +1,11 @@
+该程序中使用的模块有（需要安装的第三方库）
+loguru、lxml、requests
+如果不确定是否安装，请点击./config.bat
+
+先运行getEvSrc.py文件，再运行downloadImg.py文件，得到的图片在img目录下
+
+如果出现此报错，请更换content目录里面的ip.txt的内容——ip池（如果不懂的话不建议更改）
+HTTPConnectionPool(host='152.228.172.160', port=80): Max retries exceeded with url: http://kr.shanghai-jiuxin.com/file/mm/20211129/kxldqixm0y4.jpg 
+(Caused by ProxyError('Cannot connect to proxy.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)))
+
+如有其他问题，请留言！！！
