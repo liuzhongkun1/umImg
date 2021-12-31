@@ -27,6 +27,8 @@ class SpiderDown(Spider):
 
 
 if __name__ == '__main__':
+    if not os.paths.exists("../img"):
+        os.mkdir("../img")
     threads = []
     with open("../content/picSrc.txt", "r") as file:
         urls = file.readlines()
