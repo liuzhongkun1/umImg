@@ -1,5 +1,6 @@
 from spiderModule import Spider
 from lxml import etree
+from threading import BoundedSemaphore
 import re, os
 from loguru import logger
 
@@ -51,7 +52,8 @@ class SpiderPicUrl(Spider):
 
     def run(self):
         """运行程序"""
-        self.spider()
+        with pool_sema:
+            self.spider()
 
 
 class SpiderPicSrc(Spider):
@@ -64,7 +66,7 @@ class SpiderPicSrc(Spider):
         """处理业务"""
         html = etree.HTML(super(SpiderPicSrc, self).crawl().text)  # 调用模块中封装的方法
         src = html.xpath("//*[@id='ArticleId{dede:field.reid/}']/p/a/img/@src")
-        file = open("../content/picSrc.txt", "a+")
+        file = open("../content/PicSrc.txt", "a+")
         file.write(f"{src[0]}\n")
         file.close()
         # try:
@@ -81,7 +83,8 @@ class SpiderPicSrc(Spider):
 
     def run(self):
         """运行程序"""
-        self.spider()
+        with pool_sema:
+            self.spider()
 
 
 """线程的使用方法"""
@@ -102,14 +105,14 @@ if __name__ == '__main__':
         start, end = input("请输入要下载该网站的哪部分图片如（1 3）表示下载1到3页的图片，最多有540页：").split()
         try:
             if isinstance(eval(start), int) and isinstance(eval(end), int) and int(start) <= int(end):
-                print("s")
                 break
             else:
                 continue
         except Exception as e:
             print(e)
             print("请按要求输入！！！")
-    print("hello")
+    max_connections = 100  # 定义最大线程数
+    pool_sema = BoundedSemaphore(max_connections) # 或使用Semaphore方法，在主函数中使用with pool_sema可以限制线程的数量
     urListAll, threads, preUrl, unRun = [], [], [], []
     obj1, obj2, obj3 = re.compile(r"_\d+"), re.compile(r"\d+_"), re.compile(r"\D+")  # 在这里创建正则表达式，减少缓存的占用
     for i in range(int(start), int(end)+1):
