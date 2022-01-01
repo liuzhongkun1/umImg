@@ -1,6 +1,6 @@
 from spiderModule import Spider
 from loguru import logger
-import os
+import os, sys
 from threading import BoundedSemaphore
 
 
@@ -31,7 +31,7 @@ class SpiderDown(Spider):
 if __name__ == '__main__':
     max_connections = 100  # 定义最大线程数
     pool_sema = BoundedSemaphore(max_connections) # 或使用Semaphore方法，在主函数中使用with pool_sema可以限制线程的数量
-    if not os.paths.exists("../img"):
+    if not os.path.exists("../img"):
         os.mkdir("../img")
     threads = []
     with open("../content/PicSrc.txt", "r") as file:
