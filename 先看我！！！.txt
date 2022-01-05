@@ -7,5 +7,7 @@ loguru、lxml、requests
 如果出现此报错，请更换content目录里面的ip.txt的内容——ip池（如果不懂的话不建议更改）
 HTTPConnectionPool(host='152.228.172.160', port=80): Max retries exceeded with url: http://kr.shanghai-jiuxin.com/file/mm/20211129/kxldqixm0y4.jpg 
 (Caused by ProxyError('Cannot connect to proxy.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)))
+获取大量ip地址，访问https://ip.ihuan.me/ti.html
+同时添加ip地址，请按照相同的格式添加!!!
 
 如有其他问题，请留言！！！
