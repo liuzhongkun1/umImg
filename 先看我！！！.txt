@@ -10,4 +10,8 @@ HTTPConnectionPool(host='152.228.172.160', port=80): Max retries exceeded with u
 获取大量ip地址，访问https://ip.ihuan.me/ti.html
 同时添加ip地址，请按照相同的格式添加!!!
 
+同时如果要使用模块中的实例化的数据库，请安装相应的数据库以及其第三方库
+
+
 如有其他问题，请留言！！！
+
